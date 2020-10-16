@@ -50,7 +50,6 @@ namespace simple_calculator
 
         void Operate(char symbol, string[] v) => txtfield.Text = v.Length > 1 ? Calculate(symbol, v) : (IsDoubleSymbol(txtfield.Text,txtfield.Text.Length-1)? txtfield.Text : $"{txtfield.Text}{symbol}");            
 
-
         string Calculate(char symbol, string[] v)
         {
             if (IsDoubleSymbol(txtfield.Text, txtfield.Text.Length - 1))
