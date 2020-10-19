@@ -284,7 +284,7 @@
             this.txtfield.Multiline = false;
             this.txtfield.Name = "txtfield";
             this.txtfield.ReadOnly = true;
-            this.txtfield.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            //this.txtfield.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtfield.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.txtfield.Size = new System.Drawing.Size(384, 110);
             this.txtfield.TabIndex = 0;

@@ -56,24 +56,40 @@ namespace simple_calculator
 
         string Calculate(char symbol)
         {
-
-            Console.WriteLine(GetLastSymbol() + "Last Symbol");
-            Console.WriteLine(GetFirstSymbol() + "First Symbol");
-
             if (IsDoubleSymbol(txtfield.Text, txtfield.Text.Length - 1))
                 return txtfield.Text;
 
-            var v = txtfield.Text.Split(GetLastSymbol());
+            var val = Split(txtfield.Text,symbol);
 
-            switch (symbol)
+            switch (GetFirstSymbol())
             {
-                case '+': return (float.Parse(v[1]) + float.Parse(v[0])).ToString("F1") + symbol;
-                case '-': return (float.Parse(v[1]) - float.Parse(v[0])).ToString("F1") + symbol;
-                case '*': return (float.Parse(v[1]) * float.Parse(v[0])).ToString("F1") + symbol;
-                case '/': return (float.Parse(v[1]) / float.Parse(v[0])).ToString("F1") + symbol;
+                case '+': return (val.v0 + val.v1).ToString("F1") + symbol;
+                case '-': return (val.v0 - val.v1).ToString("F1") + symbol;
+                case '*': return (val.v0 * val.v1).ToString("F1") + symbol;
+                case '/': return (val.v0 / val.v1).ToString("F1") + symbol;
             }
             return symbol.ToString();
         }
+
+        (float v0, float v1) Split(string exp,char symbol)
+        {
+            bool isNegative = false;
+
+            if (exp[0] == '-')
+            {
+                isNegative = true;
+                exp = exp.Substring(1);
+            }
+
+            var vals = exp.Split(GetLastSymbol());
+
+            float v0 = isNegative ? float.Parse(vals[0]) * (-1) : float.Parse(vals[0]); 
+            float v1=float.Parse(vals[1]);
+
+            return (v0,v1);
+        }
         #endregion
+
+
     }
 }
